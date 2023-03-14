@@ -16,7 +16,11 @@ app.use(cors())
 // sanity check
 app.use('/', (req, res, next) => {
     return res.status(200).json({"msg": "Hello from User Microservice"})
-})
+});
+
+// app.use('/prefix', (req, res, next) => {
+//     return res.status(200).json({"msg": "Testing prefix route"})
+// })
 
 // app listener
 app.listen(port, () => {
