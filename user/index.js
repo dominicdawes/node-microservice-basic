@@ -1,6 +1,7 @@
 const express = require('express');
-const cors = require('cors')
-require('dotenv').config()
+const { user } = require('./api_routes')
+const cors = require('cors');
+require('dotenv').config();
 
 
 const app = express();
@@ -13,14 +14,13 @@ app.use(express.urlencoded({ extended: true, limit: '1mb'}))
 app.use(cors())
 // app.use(express.static(__dirname + '/public'))
 
-// sanity check
-app.use('/', (req, res, next) => {
-    return res.status(200).json({"msg": "Hello from User Microservice"})
-});
+// hook to user-api routes
+user(app)
 
-// app.use('/prefix', (req, res, next) => {
-//     return res.status(200).json({"msg": "Testing prefix route"})
-// })
+// sanity check
+// app.use('/', (req, res, next) => {
+//     return res.status(200).json({"msg": "Hello from User Microservice"})
+// });
 
 // app listener
 app.listen(port, () => {
