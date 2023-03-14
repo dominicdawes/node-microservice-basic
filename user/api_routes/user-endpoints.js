@@ -8,7 +8,11 @@ module.exports = (app) => {
 
     app.use('/about', async (req, res, next) => {
         const about = "this is the user endpoint"
-        console.log("============== User Endpoint Received a Request")
-        return res.status(200)
-    })
+        console.log("============== /user/about Received a Request")
+        return res.status(200).json({"msg": "this is the /user/about endpoint"})
+    });
+
+    app.use('/', (req, res, next) => {
+        return res.status(200).json({"msg": "Hello from User Microservice"})
+    });
 }

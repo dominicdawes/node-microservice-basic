@@ -1,6 +1,7 @@
 const express = require('express');
-const cors = require('cors')
-require('dotenv').config()
+const { location } = require('./api_routes');
+const cors = require('cors');
+require('dotenv').config();
 
 
 const app = express();
@@ -13,12 +14,15 @@ app.use(express.urlencoded({ extended: true, limit: '1mb'}))
 app.use(cors())
 // app.use(express.static(__dirname + '/public'))
 
-// sanity check
-app.use('/', (req, res, next) => {
-    return res.status(200).json({"msg": "Hello from Location Microservice"})
-})
+// hook to user-api routes
+location(app)
+
+// sanity check -- UNCOMMENT WHEN ROUTES ARE NOT CONNECTED
+// app.use('/', (req, res, next) => {
+//     return res.status(200).json({"msg": "Hello from Location Microservice"})
+// });
 
 // app listener
 app.listen(port, () => {
-    console.log('"location" listeing on port: ', port)
+    console.log('"location" listening on port: ', port)
 });
