@@ -17,7 +17,7 @@ app.use(cors())
 // hook to user-api routes
 user(app)
 
-// sanity check
+// sanity check -- UNCOMMENT WHEN ROUTES ARE NOT CONNECTED
 // app.use('/', (req, res, next) => {
 //     return res.status(200).json({"msg": "Hello from User Microservice"})
 // });
