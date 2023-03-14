@@ -20,5 +20,5 @@ app.use('/', (req, res, next) => {
 
 // app listener
 app.listen(port, () => {
-    console.log('"location" listeing on port: ', port)
+    console.log('"location" listening on port: ', port)
 });
